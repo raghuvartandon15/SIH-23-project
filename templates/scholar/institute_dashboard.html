@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+
+{% block start %}
+<head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+
+    #navbar {
+        background-color: #e76b12;
+        color: #fff;
+        text-align: center;
+        padding: 5px;
+    }
+
+    #profile-card {
+        max-width: 400px;
+        margin-top: 20px;
+        margin-left: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    #profile-image {
+        width: 100px; /* Adjust the width as needed */
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+    .btn {
+align-items: center;
+display: flex;
+margin-left: 0;
+width: 150px;
+height: 50px;
+justify-content: center;
+}
+    #logout-btn {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        border: 2px solid black;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    th {
+        background-color: orange;
+    }
+
+    .column1{
+        float:left;
+        width: 40%;
+        margin-left: 10px;
+    }
+
+    .column2{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 40px;
+        padding-right: 20px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+
+    }
+</style>
+</head>
+
+<div id="navbar">
+    <h1>Scholar Connect - INSTITUTE DASHBOARD</h1>
+</div>
+<div class="row">
+<div id="profile-card" class="column1">
+    <h2>Welcome! </h2>
+    <p style="font-size:x-large;"> {{request.user}}</p>
+    <h2>Institute Code: </h2>
+    <p style="font-size:x-large;">2024231</p>
+    <a href="{% url 'scholar:institute_logout' %}" class="btn btn-primary" style="width: 80px; text-align: center;">Logout</a>
+</div>
+<div class="column2">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Sr No.</th>
+                <th>ABC ID</th>
+                <th>Enrollment NO</th>
+                <th>Mobile</th>
+                <th>Course Name</th>
+                <th>Name of Scheme</th>
+                <th>View Details</th>
+            </tr>
+            
+              
+        </thead>
+        <tbody id="table-body">
+            <!-- Data will be dynamically inserted here -->
+            {% for app in student_applications %}
+            <tr>
+                
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{app.user}}</td>
+                <td>{{app.enrollment_no}}</td>
+                <td>{{app.phone_number}}</td>
+                <td>{{app.course}}</td>
+                <td>{{app.schol_cat}}</td>
+                <td><a href="{% url 'scholar:student_details' app.user_id %}" class="btn btn-primary btn-sm" >View</a></td>
+            </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+
+</div>
+</div>
+
+    {% comment %} <h2>Welcome {{request.user}}</h2>
+    <p> Welcome to the Dashboard.</p>
+    <p> You are here it means the authentication worked !!!</p>
+     <a href="{% url 'scholar:institute_logout' %}" class="btn btn-primary" >Logout</a> {% endcomment %}
+{% endblock %}

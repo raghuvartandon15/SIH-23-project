@@ -1,0 +1,123 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% load tailwind_filters %}
+{% block start %}
+
+
+<head>
+    <link rel="stylesheet" href="{% static 'scholar_application2.css' %}">
+</head>
+
+<div class="header">
+    <h1><u>UPLOAD REQUIRED DOCUMENTS</u></h1>
+</div>
+
+<form method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+<table>
+<tr>
+<th>SNO.</th>
+<th>Documents Type</th> 
+<th>Uploaded / Not Uploaded</th>
+<th>Action</th>
+<th>Document Name</th>
+</tr>
+<!-- Row 1 -->
+<tr>
+<td>1</td>
+<td>Applicant Photo</td>
+<td id="status1">Not Uploaded</td>
+<td>
+  {% comment %} <input type="file" id="fileInput1" style="display: none;" onchange="uploadFile(1)">
+  <button onclick="document.getElementById('fileInput1').click()">Upload</button> {% endcomment %}
+  {{form.applicant_photo | as_crispy_field}}
+</td>
+<td id="fileName1"></td>
+</tr>
+<!-- Row 2 -->
+<tr>
+<td>2</td>
+<td>Domicile Certificate</td>
+<td id="status2">Not Uploaded</td>
+<td>
+  {{form.domicile_certificate | as_crispy_field}}
+</td>
+<td id="fileName2"></td>
+</tr>
+
+<!-- Row 3 -->
+<tr>
+<td>3</td>
+<td>Income Certificate</td>
+<td id="status2">Not Uploaded</td>
+<td>
+  {{form.income_certficate | as_crispy_field }}
+</td>
+<td id="fileName3"></td>
+</tr>
+
+<!-- Row 4 -->
+<tr>
+<td>4</td>
+<td>Caste Certificate</td>
+<td id="status2">Not Uploaded</td>
+<td>
+  {{form.caste_certificate | as_crispy_field}}
+</td>
+<td id="fileName4"></td>
+</tr>
+
+<!-- Row 5 -->
+<tr>
+<td>5</td>
+<td>Aadhaar Card</td>
+<td id="status5">Not Uploaded</td>
+<td>
+  {{form.aadhar_card | as_crispy_field}}
+</td>
+<td id="fileName5"></td>
+</tr>
+
+<!-- Row 6 -->
+<tr>
+<td>6</td>
+<td>Bonafide Certificate</td>
+<td id="status6">Not Uploaded</td>
+<td>
+  {{form.bonafide | as_crispy_field}}
+</td>
+<td id="fileName6"></td>
+</tr>
+
+<!-- Row 7 -->
+<tr>
+<td>7</td>
+<td>Fee Reciept</td>
+<td id="status7">Not Uploaded</td>
+<td>
+  {{form.fee_receipt | as_crispy_field}}
+</td>
+<td id="fileName7"></td>
+</tr>
+
+<!-- Row 8 -->
+<tr>
+<td>8</td>
+<td>Passbook</td>
+<td id="status8">Not Uploaded</td>
+<td>
+  {{form.passbook | as_crispy_field}}
+</td>
+<td id="fileName8"></td>
+</tr>
+</table>
+
+    <input type="submit" value="Final Submit" class="btn btn-primary">
+</div>
+
+
+</form>
+{% endblock start %}

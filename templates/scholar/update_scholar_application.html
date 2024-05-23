@@ -1,0 +1,218 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% comment %} {% load static %} {% endcomment %}
+{% block start %}
+<head>
+    <link rel="stylesheet" href="{% static 'scholar_application.css' %}">
+</head>
+    <div>
+      <div class="form-container">
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="FS">
+          <div class="container">
+            <legend class="legend_c"> <span class="heading"> SCHOLARSHIP DETAILS </span> </legend>
+            <br>
+            <!-- <label for="Scholarship Category">Scholarship Category: <span id="required">*</span></label> -->
+            <!-- <select id="Scholarship Category" name="scholarshipcategory">
+              <option value="Pre-Metric">Pre-Metric</option>
+              <option value="Post-Metric">Post-Metric</option>
+            </select> -->
+            <label for="Scholarship Name">Scholarship Name: <span id="required">*</span></label>
+            <select id="Scholarship Name" name="scholarshipname">
+              <option value="disabilities">Scholarship for Students with Disabilities </option>
+              <option value="minorities">Scholarship for Minorities</option>
+              <option value="meritorious">Scholarship for Meritorious</option>
+            </select>
+          </div>
+          </fieldset>
+          <br>
+        </body>
+        </html>
+          <fieldset class="FS">
+          <div class="container">
+            <legend class="legend_c"><span class="heading"> PERSONAL DETAILS </span></legend>
+            <br>
+
+            <label for="applicant_name">Applicant Name:<span id="required">*</span></label>
+            <input type="text" id="input2" name="applicant_name" id="textInput" oninput="handleInput(this)" required />
+
+            <label for="dob">Date of Birth:<span id="required">*</span></label>
+            <input type="date" id="input1" name="dob" required />
+
+            <label for="father_name">Father Name:<span id="required">*</span></label>
+            <input type="text" id="input2" name="father_name" id="textInput" oninput="handleInput(this)" required />
+
+            <label for="Mother Name">Mother Name:<span id="required">*</span></label>
+            <input type="text" id="input3" name="mother_name" id="textInput" oninput="handleInput(this)" required />
+
+            <label for="gender">Gender:<span id="required">*</span></label>
+            <select id="gender" name="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+      
+            <label for="category">Category:<span id="required">*</span></label>
+            <select id="category" name="category">
+              <option value="general">General</option>
+              <option value="obc">OBC</option>
+              <option value="sc">SC</option>
+              <option value="st">ST</option>
+            </select>
+          
+            <label for="religion">Religion:<span id="required">*</span></label>
+            <select id="religion" name="religion">
+              <option value="Hindu">Hindu</option>
+              <option value="Muslim">Muslim</option>
+              <option value="Christian">Christian</option>
+              <option value="Sikh">Sikh</option>
+            </select>
+
+            <label for="Domicile">Domicile State:<span id="required">*</span></label>
+            <select id="Domicile" name="domicile" onchange="updateInstituteOptions()">
+              <!-- <option value="none" selected></option> -->
+              <option value="Bihar">Bihar</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Haryana">Haryana</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="Kerala">Kerala</option>
+            </select>
+
+            <label for="parents_profession">Parents Profession <span id="required">*</span></label>
+            <input type="text"  name="parents_profession" required>
+
+            <label for="annual_income">Annual Income:<span id="required">*</span></label>
+            <input type="number" id="input" name="annual_income" required />
+
+            <label for="disabled">Disabled:<span id="required">*</span></label>
+            <select id="disabled" name="disabled">
+              <option value="no">NO</option>
+              <option value="yes">YES</option>
+            </select>
+          
+          </div>
+          </fieldset>
+          <br>
+
+          <fieldset class="FS">
+          <div class="container">
+            <legend class="legend_c"><span class="heading"> INSTITUTE DETAILS </span></legend>
+            <br>
+
+            <label for="institute">Institute State:<span id="required">*</span></label>
+            <select id="institute" name="institute_state">
+              <!-- <option value="none" selected></option> -->
+              <option value="Bihar">Bihar</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Haryana">Haryana</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="Kerala">Kerala</option>
+            </select>
+
+            <label for="institute_name">Institute Name:<span id="required">*</span></label>
+            <select id="institute_name" name="institute_name">
+              <option value="option1">Option 1</option>
+            </select>
+
+            <label for="institute_code">Institute Code:<span id="required">*</span></label>
+            <input type="text" id="input" name="institute_code" required />
+
+            <label for="enrollment">Enrollment No:<span id="required">*</span></label>
+            <input type="text" id="input" name="enrollment" required />
+
+            <label for="course">Course:<span id="required">*</span></label>
+            <select id="course" name="course">
+              <option value="bca">BCA</option>
+              <option value="b.tech">B.Tech</option>
+              <option value="bba">BBA</option>
+            </select>
+
+            <label for="mode">Mode of Study:<span id="required">*</span></label>
+            <select id="select5" name="mode">
+              <option value="regular">Regular</option>
+              <option value="correspondence">Correspondence</option>
+            </select>
+
+            <label for="adm_year">Admission Year:<span id="required">*</span></label>
+            <input type="number" id="input" name="adm_year" required />
+
+                      
+            <label for="pr_year">Present Year:<span id="required">*</span></label>
+            <select id="select5" name="pr_year">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+
+            <label for="pass_year">Passing Year:<span id="required">*</span></label>
+            <input type="number" name="pass_year" required />
+
+            <label for="pre_board">Previous Board:<span id="required">*</span></label>
+            <select name="pre_board">
+              <option value="cbse">CBSE</option>
+              <option value="icse">ICSE</option>
+              <option value="bihar_bd">Bihar Board</option>
+              <option value="delhi_bd">Delhi Board</option>
+              <option value="haryana_bd">Haryana Board</option>
+              <option value="rajasthan_bd">Rajasthan Board</option>
+              <option value="up_bd">UP Board</option>
+            </select>
+
+            <label for="prev_class">Previous Class:<span id="required">*</span></label>
+            <input type="number" name="prev_class" required />
+        
+            <label for="percentage">Percentage:<span id="required">*</span></label>
+            <input type="number" id="input" name="annual_income" min required />
+
+          </div>
+          </fieldset>
+          <br>
+
+          <fieldset class="FS">
+          <div class="container">
+            <legend class="legend_c"><span class="heading"> BANK DETAILS </span></legend>
+            <br>      
+            <label for="acc_no">Bank Account number: <span id="required">*</span></label>
+            <input type="number"  name="acc_no" required> 
+        
+            <label for="ifsc">IFSC Code: <span id="required">*</span></label>
+            <input type="text"  name="ifsc" required> 
+
+          </div>
+          </fieldset>
+          <br>
+          <br>
+
+        <!-- <label for="select5">Select 5:</label>
+          <select id="select5" name="select5">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+          
+          <label for=""></label>
+          
+          <input type=""  name="" required> -->
+          <span class="btn">
+
+<button style="font-size: large;"  onclick="redirectToPage()">Next</button>
+
+<script>
+  function redirectToPage() {
+    // Redirect to a new page
+    window.location.href = '/scholar_application2'; // Replace with your desired URL
+  }
+</script>
+            <!-- <button type="submit" onclick="window.location.href='/scholar_application2'">Next</button> -->
+
+            
+          </span>
+        </form>
+      </div>
+    </div>
+    {% endblock start %}

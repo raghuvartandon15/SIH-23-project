@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% block start %}
+    <title>Scholar Connect - STATE OFFICER'S DASHBOARD</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            margin-bottom: 50px;
+        }
+
+        #navbar {
+            background-color: #e76b12;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+        }
+
+        #profile-card {
+            max-width: 400px;
+            margin-top: 20px;
+            margin-left: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        #profile-image {
+            width: 100px; /* Adjust the width as needed */
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        #logout-btn {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 2px solid black;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: orange;
+        }
+
+        .column1{
+            float:left;
+            width: 40%;
+        }
+
+        .column2{
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-left: 40px;
+            padding-right: 20px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <h1>Scholar Connect - STATE OFFICER'S DASHBOARD</h1>
+    </div>
+    <div class="row">
+        <div id="profile-card" class="column1">
+            <h2>Welcome! </h2>
+            <h2>State Nodal Officer ID: </h2>
+            <p style="font-size: x-large;">{{request.user}}</p>
+            <h2>Domicile State Code: </h2>
+            <p style="font-size: x-large;">2024231</p>
+            <a href="{% url 'scholar:state_logout' %}" class="btn btn-primary" style="text-align: center;">Logout</a>
+        </div>
+        <div class="column2">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr No.</th>
+                        <th>ABC ID</th>
+                        <th>Aadhaar No</th>
+                        <th>Full Name</th>
+                        <th>Mobile</th>
+                        <th>Course Name</th>
+                        <th>Name of Scheme</th>
+                        <th>View Details</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+
+                    <!-- Data will be dynamically inserted here -->
+                    {% for  student in queryset %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{request.user}}</td>
+                        <td>{{request.user}}</td>
+                        <td>{{request.user}}</td>
+                        <td>{{request.user}}</td>
+                        <td>{{request.user}}</td>
+                        <td>{{request.user}}</td>
+                        <td><button onclick="viewDetails(0)">View</button></td>
+                    </tr>
+                    {% endfor %}  
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% comment %} <script>
+        function viewDetails(index) {
+            const fakeData = [
+                { srNo: 1, applicationId: 'XYZ001',enrollmentNo: '0392909789', name: 'John Doe', mobile: '1234567890', courseName: 'Computer Science', schemeName: 'Scholarship A' },
+                { srNo: 2, applicationId: 'XYZ002',enrollmentNo: '0392909789',  name: 'Jane Doe', mobile: '9876543210', courseName: 'Electrical Engineering', schemeName: 'Scholarship B' },
+                { srNo: 3, applicationId: 'XYZ003',enrollmentNo: '0392909789',  name: 'Jane Doee', mobile: '9876543210', courseName: 'Electrical Engineering', schemeName: 'Scholarship C' }
+            ];
+
+            const data = fakeData[index];
+            window.location.href = `details_page.html?name=${data.name}&fatherName=${data.fathersName}&mobile=${data.mobile}`;
+        } {% endcomment %}
+    {% endblock start %}

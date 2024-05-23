@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% block start %}
+
+{% comment %} 
+<html>
+    <head><title>Student Dashboard</title>
+        <link rel="stylesheet" href="stud_dashboard_new.css"></head>
+    <body> {% endcomment %}
+        {% csrf_token %}
+        <div class="red-bar"></div>
+        <div><h1 style="text-align: center; background-color: orange; color: white;"> Scholar Connect - STUDENT DASHBOARD </h1></div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">  
+             <a href="{% url 'scholar:Scholar_application' %}" class="btn btn-success" style="display: flex; text-align: center;margin-left:0px; width:90px;">Apply</a>
+                {% comment %} <a href="{% url 'scholar:scholar_application' %}" class="btn btn-light" style="margin-left:5px; ">Log Out</a> {% endcomment %}
+                <a href="{% url 'users:student_logout' %}" class="btn btn-danger" style="display: block; text-align: center;">Log Out</a>
+        </div>
+
+            <div style="padding: 25px;">
+            <div style="padding: 10px; background-color: #fff3e6; font-size: .9em;border: 1px solid #dadada;">
+                <div style="padding: 10px;">
+                    <form method="POST">
+                        {% csrf_token %}
+                    <table border="0" style="width: 100%">
+                        <tbody>
+                            <tr>
+                                <td width="90px"></td>
+                                <td><h1 style="font-weight: 400; margin: 0;color: coral; font-family: 'Lucida Sans';">
+                                    Welcome, 
+                                </h1>
+                                <div style="color:black; margin-top: 5px; font-size: large;">
+                                    <!-- <b>Application ID: {}</b> -->
+                                <span style="color: #00aabb"></span>
+                                </div>
+                                <div style="color:black; margin-top: 5px; font-size: large;">
+                                    <b>Applicant Name: {{ request.user.first_name  }}
+                                    </b>
+                                <span style="color: #00aabb"></span>
+                                </div>
+                                <div style="color:black; margin-top: 5px; font-size: large;">
+                                    <b>ABC ID : {{ request.user.username}}</b>
+                                <span style="color: #00aabb"></span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+            </div>
+        </div>
+        <div style="padding-top: 20px;">
+            <table style="width: 100%; border-collapse: collapse; border-color: #adadad; border: none" cellpadding="5" border="1">
+                                
+                <tbody><tr><th bgcolor="darksalmon" style="color: white;text-align: center; padding: 5px; font-size: x-large;" colspan="6">VERIFICATION DETAILS</th>
+                </tr><tr>
+                    <td style="padding: 8px;">
+                        Application Submitted
+                    </td>
+                    {% if applied %}
+                    <td>
+                        Yes
+                    </td>
+                    {% else %}
+                    <td>
+                        No
+                    </td>
+                    {% endif %}
+                </tr>
+                <tr> 
+                </tr>
+                <tr>
+                    <td style="padding: 8px;">
+                        Application Verified by Institute      
+                    </td>
+                    {% if inst_val %}
+                    <td>
+                        Yes
+                    </td>
+                    {% else %}
+                    <td>
+                        No
+                    </td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td style="padding: 8px;">
+                        Application Verified by Domicile State
+                    </td>
+                    <td>  No                                
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td style="padding: 8px">
+                        Scholarship Granted
+                    </td>
+
+                    <td>   
+                        No
+                    </td>
+                </tr>                                 
+                <tr>  
+                </tr>
+            </tbody></table>
+        </div>
+        <br>
+        <br>
+
+{% endblock start %}
+
+{% comment %} 
+<a href="{% url 'scholar:Scholar_application' %}" class='btn btn-warning'>Apply for Scholarship </a>
+        <div style="padding: 15px;">
+            <div style="padding: 10px; background-color: #fff3e6; font-size: .9em;border: 1px solid #dadada;">
+                <div style="padding: 10px;">
+                    <table border="0" style="width: 100%">
+                        <tbody>
+                            <tr>
+                                <td width="90px">" "</td>
+                                <td><h2 style="font-weight: 400; margin: 0;color: coral;">
+                                    "Welcome, "
+                                </h2>
+                                <div style="color:black; margin-top: 5px;">
+                                    <b>Application ID: </b>
+                                <span style="color: #00aabb"></span>
+                                </div>
+                                <div style="color:black; margin-top: 5px;">
+                                    <b>Applicant Name: </b>
+                                <span style="color: #00aabb"></span>
+                                </div>
+                                <div style="color:black; margin-top: 5px;">
+                                    <b>Aadhaar Number: </b>
+                                <span style="color: #00aabb"></span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+{% endblock %} {% endcomment %}
+
+        <div class="footer">
+            &copy; 2023 | Scholar Connect
+        </div>
+
+    
+    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    

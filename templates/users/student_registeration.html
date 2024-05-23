@@ -1,0 +1,203 @@
+
+
+{% extends "base.html" %}
+{% load tailwind_filters %}
+{% block start %}
+
+<section class="vh-100" style="background-color: #eee;">
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success" role="alert">
+        {% if message.tags %}{{ message }}{% endif %}
+      </div> 
+    {% endfor %}
+  {% endif %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .img_right{
+    border-radius:40px;
+    }
+    .header {
+        height: 52px;
+        background-color: orange;
+        color: white;
+        text-align: center;
+    }
+    
+      .card-form1 {
+        background-color:rgb(174, 243, 174);
+        width: 90%;
+        border-radius:10px;
+        margin: 20px auto;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+    }
+    
+    .card-form2 {
+          background-color:rgb(253, 219, 175);
+        width: 90%;
+        margin: 10px auto;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+          border-radius:10px;
+    }
+    
+    .card-form3 {
+        background-color:rgb(174, 176, 243);
+        width: 90%;
+        border-radius:10px;
+        margin: 20px auto;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+    }
+    
+    .form-group {
+        margin: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 5px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+      border-radius:10px;
+        margin-bottom: 10px;
+    }
+    
+    .form-group button {
+        background-color: green;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .footer {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    
+    .footer a {
+        color: white;
+    }
+    
+    .image-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+    }
+    
+    img {
+        max-width: 100%;
+        height: 125px;
+    }
+    
+    .button-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+</style>
+<div class="header">
+    <h1>Scholar Connect - Student Registration</h1>
+</div>
+
+<form action="#" method="POST">
+    {% csrf_token %}
+    <div class="form-container">
+        
+        
+        <div class="row">
+            <!-- Column 1: CustomUser Form -->
+            <div class="col-md-6 px-5 py-1">
+              {{ user_form.first_name | as_crispy_field }}
+              
+              
+              {{ user_form.username | as_crispy_field }}
+             
+              {{ user_form.password | as_crispy_field }}
+              {{ user_form.password2 | as_crispy_field }}
+              {% comment %} {{}} {% endcomment %}
+              <!-- Add other CustomUser fields here -->
+            </div>
+            
+            <!-- Column 2: Student Form -->
+            <div class="col-md-6 px-5">
+              {{ user_form.last_name | as_crispy_field }}
+              {{ user_form.email | as_crispy_field }}
+              {{ student_form.enrollment_no | as_crispy_field }}
+              {{ student_form.course | as_crispy_field }}
+              {{ student_form.institute | as_crispy_field }}
+              <!-- Add other Student fields here -->
+            </div>
+          </div>
+{% comment %} 
+
+        <div class="card-form2">
+            <div class="form-group">
+                <form action="" method="post">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                    
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </form>
+            </div>
+        </div>
+        
+        <div class="card-form1">
+            <div class="form-group" id="passwordForm">
+                <form action="" method="post">
+                    <label for="ABCID">ABC ID *</label>
+                    <input type="number" id="aadhar" name="aadhaar" required>
+                    
+                    <label for="email">Email Id *</label>
+                    <input type="email" id="email" name="email" required>
+                </form>
+            </div>
+        </div>
+        
+        
+        <div class="card-form1">
+            <div class="form-group" id="passwordForm">
+                <div class="form-group password-container">
+                    <form action="" method="post">
+                        <label for="password">Password *</label>
+                        <input type="password" id="password" name="password" required>
+                        
+                        <label for="confirmPassword">Confirm Password *</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </form>
+                </div>
+            </div>
+        </div>
+         {% endcomment %}
+        
+        
+        <div class="button-container">
+            <button type="Submit" value="next" class="form-group button" onclick="checkPasswordMatch()"> Next </button>
+        </div>
+    </div>
+</form>
+    {% endblock start %}

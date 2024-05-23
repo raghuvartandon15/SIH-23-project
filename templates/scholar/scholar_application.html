@@ -1,0 +1,179 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% load tailwind_filters %}
+{% comment %} {% load static %} {% endcomment %}
+{% block start %}
+<script>
+  function redirectToPage() {
+    // Redirect to a new page
+    window.location.href = '/scholar_application2'; // Replace with your desired URL
+  }
+</script> 
+<head>
+    <link rel="stylesheet" href="{% static 'scholar_application.css' %}">
+</head>
+    <div>
+      <div class="form-container">
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="FS">
+          <div class="container">
+            <legend class="legend_c"> <span class="heading"> SCHOLARSHIP DETAILS </span> </legend>
+            <br>
+            <!-- <label for="Scholarship Category">Scholarship Category: <span id="required">*</span></label> -->
+            <!-- <select id="Scholarship Category" name="scholarshipcategory">
+              <option value="Pre-Metric">Pre-Metric</option>
+              <option value="Post-Metric">Post-Metric</option>
+            </select> -->
+            {% comment %} <label for="Scholarship Name">Scholarship Name: <span id="required">*</span></label>
+            <select id="Scholarship Name" name="scholarshipname">
+              {% for info in scholars %}
+              <option value="{{ info.pk }}">{{info.category}}</option>
+
+              {% endfor %}
+            </select> {% endcomment %}
+            {{form.schol_cat | as_crispy_field}}
+            
+          </div>
+          </fieldset>
+          <br>
+        </body>
+        </html>
+          <fieldset class="FS">
+          <div class="container">
+            <legend class="legend_c"><span class="heading"> PERSONAL DETAILS </span></legend>
+            <br>
+
+            <!--<label for="applicant_name">Applicant Name:<span id="required">*</span></label>
+            <input type="text" id="input2" name="applicant_name" id="textInput" oninput="handleInput(this)" required />-->
+            <label for='Adhaar'>Aadhaar<span id="required">*</span></label>
+              {{form.adhaar}}
+            {{form.dob | as_crispy_field}}
+            {% comment %} {{form.adhaar}} {% endcomment %}
+
+            {{form.father_name | as_crispy_field}}
+            {{form.mother_name | as_crispy_field }}
+            {{form.gender | as_crispy_field}}
+            {{form.category_caste | as_crispy_field}}
+            {{form.religion | as_crispy_field}}
+            {{form.domicile | as_crispy_field}}
+            {{form.phone_number | as_crispy_field}}
+            {{form.parents_profession | as_crispy_field}}
+            {{form.annual_income | as_crispy_field}}
+            {{form.disabled | as_crispy_field}}
+           
+            
+          </div>
+          </fieldset>
+          <br>
+
+          <fieldset class="FS">
+          <div class="container">
+            <legend class="legend_c"><span class="heading"> INSTITUTE DETAILS </span></legend>
+            <br>
+
+            {% comment %} <label for="institute">Institute State:<span id="required">*</span></label> {% endcomment %}
+              <!--
+            <select id="institute" name="institute_state">
+              <option value="Bihar">Bihar</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Haryana">Haryana</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="Kerala">Kerala</option>
+            </select>-->
+
+          <!--  <label for="institute_name">Institute Name:<span id="required">*</span></label>
+            <select id="institute_name" name="institute_name">
+              <option value="option1">IPU</option>
+              <option value="option1">AKTU</option>
+            </select> !-->
+
+           <!-- <label for="institute_code">Institute Code:<span id="required">*</span></label>
+            <input type="text" id="input" name="institute_code" required />
+            !-->
+            <label for='enrollment_no'>Enrollment Number:<span id="required">*</span></label>
+            {{form.enrollment_no}}
+
+            <label for='Course'>Course:<span id="required">*</span></label>
+            {{form.course}}
+
+            <!--<label for="mode">Mode of Study:<span id="required">*</span></label>
+            <select id="select5" name="mode">
+              <option value="regular">Regular</option>
+              <option value="correspondence">Correspondence</option>
+            </select>-->
+            <label for='admission_year'>Admission Year:<span id="required">*</span></label>
+            {{form.admission_year}}
+           
+
+                      
+            <!--<label for="pr_year">Present Year:<span id="required">*</span></label>
+            <select id="select5" name="pr_year">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>-->
+
+            <!--<label for="pass_year">Passing Year:<span id="required">*</span></label>
+            <input type="number" name="pass_year" required />-->
+              <label for='Board Name'>Board Name<span id="required">*</span></label>
+              
+            {{form.board_name_12}}
+
+            <label for='roll_12'>Roll Number<span id="required">*</span></label>
+            {{form.roll_12}}
+
+            <!--<label for="prev_class">Previous Class:<span id="required">*</span></label>
+            <input type="number" name="prev_class" required />-->
+
+            <label for='marks_12'>Marks Obtained<span id="required">*</span></label>
+              {{form.marks_12}}
+
+            
+
+          </div>
+          </fieldset>
+          <br>
+
+          <fieldset class="FS">
+          <div class="container">
+            <legend class="legend_c"><span class="heading"> BANK DETAILS </span></legend>
+            <br>      
+
+            <label for='acc_number'>Account Number<span id="required">*</span></label>
+  
+            {{form.acc_number}}
+
+            <label for='ifsc_num'>IFSC Number<span id="required">*</span></label>
+            {{form.ifsc_num}}
+
+          </div>
+          </fieldset>
+          <br>
+          <br>
+
+        <!-- <label for="select5">Select 5:</label>
+          <select id="select5" name="select5">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+          
+          <label for=""></label>
+          
+          <input type=""  name="" required> -->
+          <span class="btn">
+
+{% comment %} <input class="btn btn-primary" style="font-size: large;" type="submit" ></input> {% endcomment %}
+<button type="submit" onclick="redirectToPage()">Next</button>
+
+
+            
+          </span>
+        </form>
+      </div>
+    </div>
+    {% endblock start %}
