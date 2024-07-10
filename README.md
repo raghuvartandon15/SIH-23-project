@@ -1,25 +1,12 @@
 <p align="center">
-  <img src="https://nanonets.com/blog/content/images/2022/06/shutterstock_1785042593.jpg" alt="NSVP" width="200">
-</p>
-
-<p align="center">
   <b>Institute Level Verification Portal</b>
 </p>
 <p align="center">
-  <b>Team Bharat</b>
-  <b>SIH 2023 Finals</b>
+  <b>Team BugByters</b>
+  <b>SIH 2023 Finalist</b>
 </p>
 <hr>
 
-<details>
-<summary>Table of Contents</summary>
-
-- [Description](#description)
-- [Assets](#assets)
-- [Tech Stack](#tech-stack)
-- [Team Members](#team-members)
-
-</details>
 
 ## 📝Description
 
@@ -46,40 +33,11 @@ The Institute-Level Verification Portal aims to leverage advanced technology to 
 - Created a model to verify the document template using EasyOCR and PaddleOCR.
 - Dialog flow bot for solving queries of the user and providing them with emails of the concerned authorities.
 
-
-## 🔗Assets
-
-- [GitHub Repo](https://github.com/psankhe28/sih-finals)
-- [PPT](https://www.canva.com/design/DAFwlTQmugY/px7HjM_vJoHzSv3yLdUOsA/view?utm_content=DAFwlTQmugY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
-
-## 🤖Tech-Stack
-
-### Web Development
-
-- React.js
-- JavaScript
-- Bootstrap
-- HTML/CSS
-- Flask
-
-### Database
-
-- Supabase
-
-### Image Processing
-
-- Paddle OCR
-- Easy OCR
-
-### Blockchain 
-
-- IPFS
-
 ## 👩‍💻Team Members
 
-- [Pratiksha Sankhe](https://github.com/psankhe28)
-- [Apurv Sonawane](https://github.com/Apurv428)
-- [Harshil Shah](https://github.com/harshilshah99)
-- [Chaitya Vora](https://github.com/vorachaitya)
-- [Naman Kothari](https://github.com/NamanKothari5)
-- [Kunal Agarwal](https://github.com/KunalA18)
+- [Raghuvar Tandon]
+- [Kanishk Suri]
+- [Prabhat Kumar]
+- [Siddharth Kumar Pandey]
+- [Hrikit Kumar]
+- [Akansha Dangri]
